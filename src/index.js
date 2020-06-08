@@ -3,11 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import Ball from './components/Ball'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <Ball x={100} y={100} xSpeed={300} ySpeed={300}/>,
   document.getElementById('root')
 );
 

@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class Tick extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      left: 5
+    }
+    this.timer = setInterval(() => {
+
+      this.setState({
+        left: this.state.left - 1
+      })
+      if (this.state.left <= 0) {
+        clearInterval(this.timer)
+      }
+      console.log(this.state.left);
+    }, 1000)
+
+  }
+  render() {
+    return (
+        <h1>
+          剩余事件： {this.state.left}
+        </h1>
+    )
+  }
 }
-
-export default App;
