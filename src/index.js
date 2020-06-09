@@ -1,14 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
-import Ball from './components/Ball'
+import ThreeDmo from "./components/ThreeDmo";
 
-ReactDOM.render(
-    <Ball x={100} y={100} xSpeed={300} ySpeed={300}/>,
-  document.getElementById('root')
-);
+ReactDOM.render(<ThreeDmo/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
