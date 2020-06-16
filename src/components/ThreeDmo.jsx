@@ -23,6 +23,10 @@ class ThreeDmo extends Component {
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     document.getElementById('container').appendChild(this.renderer.domElement)
 
+    /**
+     *
+     * @type {BoxGeometry}
+     */
     // 创建立方体对象 宽，高，长
     const geometry = new THREE.BoxGeometry(100, 100, 100);
     // 创建一个球体几何对象
@@ -35,13 +39,18 @@ class ThreeDmo extends Component {
     this.cube2.position.set(120, 0, 0)
     this.scene.add(this.cube);
     this.scene.add(this.cube2);
-    // 设置电光源
+
+    // 设置点光源 可以让物体有立体感
     const point = new THREE.PointLight(0xffffff);
-    point.position.set(400, 200, 300); //点光源位置
-    this.scene.add(point); //点光源添加到场景中
-    // 设置环境光
+    // 设置点光源位置
+    point.position.set(400, 200, 300);
+    // 点光源添加到场景中
+    this.scene.add(point);
+
+    // 设置环境光 设置整个空间的明暗效果
     const ambient = new THREE.AmbientLight(0x444444);
     this.scene.add(ambient);
+
     this.camera.position.set(200, 300, 200);
     this.camera.lookAt(this.scene.position);
     // 创建控件对象,可以用鼠标控制角度，大小
