@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import OldLifeCycle from "./Components/OldLifeCycle";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    n: 1,
+    show: true
+  }
+
+  render() {
+    const comp = this.state.show ? <OldLifeCycle n={this.state.n}/> : null
+    return (
+        <div>
+          {comp}
+          <button onClick={() => {
+            this.setState(state => ({
+              n: state.n + 1
+            }))
+          }}>props n++
+          </button>
+          <button onClick={() => {
+            this.setState(state => state.show = !state.show)
+          }}>显示/隐藏</button>
+        </div>
+    );
+  }
 }
 
 export default App;

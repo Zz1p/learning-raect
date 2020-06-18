@@ -1,68 +1,35 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**生命周期函数仅存在于类组件中，函数组件每次调用都是重新运行函数，旧的组件即刻被销毁**
 
-## Available Scripts
+***
 
-In the project directory, you can run:
+### 旧版生命周期
+1.  constructor     
+    constructor()只创建一次，不能使用setState
+2.  componentWillMount  
+    正常情况下只运行一次，可以使用setState，但是为了避免bug，最好不要使用，因为在某些特殊情况下，
+    可能会被调用多次
+3.  **render**  
+    1.  返回一个虚拟dom，被挂载到虚拟dom树上，最终被渲染到页面中
+    2.  render()不止运行一次
+    3.  这里禁止使用setState
+4.  **componentDidMount**
+    1.  只会执行一次
+    2. 可以使用setState，通常情况下会把ajax，计时器等写在这
+5.  组件进入活跃状态
+6.  componentWillReceiveProps   
+    1.即将接收到新的属性值
+    2. 该函数可能会导致一些bug，不推荐使用
+7.  **shouldComponentUpdate**
+    1.  指示react是否重新渲染组件，通过返回true或false来判断
+    2.  默认情况下返回true
+    3.  性能优化点
+8.  c 
+    组件即将被重新渲染
+9.  componentDidUpdate  
+    组件完成渲染，可以在这里做一些dom操作
+10. **componentWillUnMount**    
+    1. 通常在该函数中销毁一些组件依赖的资源，例如计时器
+***
 
-### `yarn start`
+### 新版生命周期
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
