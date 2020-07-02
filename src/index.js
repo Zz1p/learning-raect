@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 
 ReactDOM.render(
-    <App />,
+    <App name={'dd'} age={18}/>,
   document.getElementById('root')
 );
 

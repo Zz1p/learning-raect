@@ -1,13 +1,16 @@
-import React, {Component} from 'react';
+import React from 'react';
+import FunctionDefaultProps from "./FunctionDefaultProps";
+import ClassDefaultProps from './ClassDefaultProps';
+import PropTypeValidate from './PropTypeValidate';
 
-class App extends Component {
-  render() {
-    return (
-        <div>
-
-        </div>
-    );
-  }
+function App(props) {
+  return (
+      <div>
+        <FunctionDefaultProps />
+        <ClassDefaultProps />
+        <PropTypeValidate name={'check'}/>
+      </div>
+  );
 }
 
 export default App;
